@@ -14,37 +14,71 @@ public class RoutingAlgos {
             Arrays.fill(choices, 1);
 
         else{
-            for(int i = 0; i < RoutingConstants.days; i++){
-                int gaps = RoutingConstants.days - freq;
-                if(gaps > 1){
-                    int daysLeft = freq;
-                    Random rand = new Random();
-                    boolean prevDayUsed = false;
+            int gaps = RoutingConstants.days - freq;
+            if(gaps > 1){
+                int daysLeft = freq;
+                Random rand = new Random();
+                boolean prevDayScheduled = false;
 
-                    for(int j = 0; j < RoutingConstants.days; j++){
-                        if(gaps > daysLeft){
-                            
-                        }
-                        else if(gaps < daysLeft){
-
-                        }
+                if(gaps >= freq) {
+                    if(gaps == freq){
+                        int r = rand.nextInt();
+                        if(r == 0)
+                            for(int i = 0; i < RoutingConstants.days; i++){
+                                if(i % 2 == 0)
+                                    choices[i] = 0;
+                                else
+                                    choices[i] = 1;
+                            }
                         else{
-
+                            for(int i = 0; i < RoutingConstants.days; i++) {
+                                if (i % 2 == 0)
+                                    choices[i] = 1;
+                                else
+                                    choices[i] = 0;
+                            }
                         }
                     }
+                    else if(freq == 1){
+                        int r = rand.nextInt() * (RoutingConstants.days - 1)+ 1;
+                        for(int i = 0; i < RoutingConstants.days; i++){
+                            if(i != r)
+                                choices[i] = 0;
+                            else
+                                choices[i] = 1;
+                        }
+                    }
+                    else{
+                        int extraGaps = gaps - freq;
+
+                        for(int i = 0; i < RoutingConstants.days; i++){
+                            double useGap = rand.nextDouble() * (gaps/RoutingConstants.days);
+
+                        }
+
+                    }
+
                 }
+
                 else{
-                    int min = 0;
-                    for(int j = 0; j < stopCounts.length; j++){
-                        if(stopCounts[j] < min)
-                            min = j;
+                    for(int i = 0; i < RoutingConstants.days; i++){
+
                     }
-                    for(int j = 0; j < RoutingConstants.days; j++){
-                        if(j == min)
-                            stopCounts[j] = 0;
-                        else
-                            stopCounts[j] = 1;
-                    }
+
+                }
+
+            }
+            else{
+                int max = 0;
+                for(int j = 0; j < stopCounts.length; j++){
+                    if(stopCounts[j] > max)
+                        max = j;
+                }
+                for(int j = 0; j < RoutingConstants.days; j++){
+                    if(j == max)
+                        stopCounts[j] = 0;
+                    else
+                        stopCounts[j] = 1;
                 }
             }
 
