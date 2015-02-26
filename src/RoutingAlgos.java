@@ -136,7 +136,7 @@ public class RoutingAlgos {
                                 if (gapDays[0] == rand)
                                     gapDays[1] = (rand + 2) % (RoutingConstants.days - 1);
                                 else
-                                    gapDays[1] = 0;
+                                    gapDays[1] = rand;
                             }
                         }
 
@@ -192,7 +192,6 @@ public class RoutingAlgos {
             }
         }
 
-
         return choices;
     }
 
@@ -246,6 +245,7 @@ public class RoutingAlgos {
         RoutingAlgos algos = new RoutingAlgos();
         for(int i = RoutingConstants.days - 1; i >= 0; i--){
             finalRoutes[i] = algos.routes(i);
+            System.out.print(Arrays.toString(algos.stopCounts) + "\n");
 //            System.out.println(i + ",");
         }
 
