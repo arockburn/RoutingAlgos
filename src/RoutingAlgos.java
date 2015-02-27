@@ -163,7 +163,6 @@ public class RoutingAlgos {
                             }
                             if(!gap)
                                 choices[i] = 1;
-
                             daysScheduled++;
                         }
                     }
@@ -191,7 +190,6 @@ public class RoutingAlgos {
                 }
             }
         }
-
         return choices;
     }
 
@@ -241,10 +239,10 @@ public class RoutingAlgos {
     }
 
     public static void main(String[] args){
-        int[][] finalRoutes = new int[RoutingConstants.days][];
+        int[] finalRoutes = new int[RoutingConstants.days];
         RoutingAlgos algos = new RoutingAlgos();
         for(int i = RoutingConstants.days - 1; i >= 0; i--){
-            finalRoutes[i] = algos.routes(i);
+            algos.routes(i);
             System.out.print(Arrays.toString(algos.stopCounts) + "\n");
 //            System.out.println(i + ",");
         }

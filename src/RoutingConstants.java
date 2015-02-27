@@ -8,5 +8,5 @@ public class RoutingConstants {
     public static final int fourDayStops = 4;
     public static final int fiveDayStops = 1;
     public static final int sixDayStops = 10;
-    public static final int days = 6;
+    public static final int days = 5;
 }
